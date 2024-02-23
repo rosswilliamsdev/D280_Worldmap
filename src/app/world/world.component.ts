@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { WorldBankService } from '../services/world-bank.service'; // Adjust the import path as necessary
+import { WorldBankService } from '../services/world-bank.service';
 
 @Component({
   selector: 'app-world',
