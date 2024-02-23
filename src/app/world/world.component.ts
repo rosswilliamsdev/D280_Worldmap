@@ -1,19 +1,19 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
+import { WorldBankService } from '../services/world-bank.service'; // Adjust the import path as necessary
 
 @Component({
   selector: 'app-world',
   templateUrl: './world.component.html',
-  styleUrl: './world.component.css',
+  styleUrls: ['./world.component.css'],
 })
 export class WorldComponent {
-  @Output() countrySelected = new EventEmitter<string>();
+  constructor(private worldBankService: WorldBankService) {}
 
   onMapClick(event: MouseEvent): void {
-    // console.log('Map clicked', event.target);
     const element = event.target as SVGElement;
     if (element.tagName === 'path') {
       const countryId = element.id;
-      this.countrySelected.emit(countryId);
+      this.worldBankService.setSelectedCountry(countryId);
     }
   }
 }

@@ -12,8 +12,11 @@ export class FactsComponent implements OnInit {
   constructor(private worldBankService: WorldBankService) {}
 
   ngOnInit(): void {
-    // Example: Fetch data for Australia
-    this.getCountryData('AU');
+    this.worldBankService.selectedCountry$.subscribe((countryCode) => {
+      if (countryCode) {
+        this.getCountryData(countryCode);
+      }
+    });
   }
 
   getCountryData(countryCode: string): void {
